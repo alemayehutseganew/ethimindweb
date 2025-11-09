@@ -356,7 +356,7 @@ function Footer({ brand }: { brand: string }) {
               </svg>
             </a>
             <a
-              href="https://github.com/mulat1221"
+              href="https://github.com/matcompute"
               target="_blank"
               rel="noopener noreferrer"
               className="text-slate-400 hover:text-cyan-300 transition-colors"
