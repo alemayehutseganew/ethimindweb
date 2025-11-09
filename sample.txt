@@ -1,0 +1,417 @@
+import React, { useMemo, useState, useEffect, useRef } from "react";
+
+// Single-file landing page for EthiMinD
+// - Tailwind CSS classes
+// - Simple EN/AM i18n
+// - Floating AI chat widget (local mock)
+// - Dark, futuristic aesthetic aligned with user's LinkedIn palette
+// - Accessible and responsive
+
+export default function EthiMinDHome() {
+  const [lang, setLang] = useState("en");
+  const t = useI18n(lang);
+  useEffect(() => {
+    document.title = "EthiMinD — Beyond Intelligence";
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-cyan-300/40">
+      <GradientBackdrop />
+      <Header lang={lang} setLang={setLang} t={t} />
+      <Hero t={t} />
+      <Trustbar t={t} />
+      <Ecosystem t={t} />
+      <Products t={t} />
+      <Vision2035 t={t} />
+      <CTA t={t} />
+      <Footer t={t} />
+      <ChatWidget t={t} />
+    </div>
+  );
+}
+
+/*************************
+ * i18n — EN / አማ (basic)
+ *************************/
+function useI18n(lang) {
+  const dict = useMemo(
+    () => ({
+      en: {
+        nav_home: "Home",
+        nav_ecosystem: "Ecosystem",
+        nav_products: "Products",
+        nav_vision: "Vision 2035",
+        nav_contact: "Contact",
+        hero_kicker: "ETHIOPIA • AI • FUTURE",
+        hero_title: "Beyond Intelligence, With Your Future",
+        hero_sub: "EthiMinD is building an end‑to‑end AI ecosystem from Ethiopia: devices, infrastructure, education, and research—rooted in culture, powered by innovation.",
+        hero_cta_primary: "Explore the Ecosystem",
+        hero_cta_secondary: "Meet the Founder",
+        trust_title: "Designing with ethics, culture, and impact.",
+        eco_title: "The EthiMinD Ecosystem",
+        eco_sub: "A connected stack that turns ideas into industry.",
+        eco_items: [
+          { title: "AI Infrastructure", body: "Compute, models, and developer tooling for Ethiopia and beyond." },
+          { title: "Devices & Robotics", body: "iMind (phone), iRide (car), iSky (drone), iNest (home)." },
+          { title: "National Sectors", body: "Agriculture, Health, Education, Security — AI that serves people." },
+          { title: "Learning & Labs", body: "Amharic coding initiative, LearnAI Ethiopia, and open research hubs." },
+        ],
+        prod_title: "Early Products & Pilots",
+        prod_cards: [
+          { name: "iMind", desc: "An AI‑first phone with on‑device models and private assistants." },
+          { name: "iGrow", desc: "Smart irrigation and crop health insights for farmers." },
+          { name: "HealthAI", desc: "Decision support for clinics with offline capability." },
+          { name: "LearnAI", desc: "Amharic‑first coding + AI curriculum for schools." },
+        ],
+        vision_title: "Vision Map 2035",
+        vision_points: [
+          "Launch EthiMinD v1 site and community by Jan 2026.",
+          "Government‑ready pilots by 2027.",
+          "Ethiopian tech influencer + 100M birr milestone by 2030.",
+          "Africa Top‑50 impact innovator by 2035.",
+        ],
+        cta_title: "Build the future from Ethiopia.",
+        cta_sub: "Investors, researchers, creators, and partners — let’s co‑create an AI civilization rooted in Abay.",
+        cta_primary: "Collaborate",
+        cta_secondary: "Download One‑Pager",
+        foot_rights: "© "+new Date().getFullYear()+" EthiMinD. All rights reserved.",
+        chat_title: "EthiMinD Assistant",
+        chat_placeholder: "Ask about the ecosystem, products, or partnerships…",
+        chat_disclaimer: "Local demo — doesn’t send data.",
+        lang_label: "Language",
+        lang_en: "EN",
+        lang_am: "AM",
+      },
+      am: {
+        nav_home: "መነሻ",
+        nav_ecosystem: "ኢኮሲስተም",
+        nav_products: "ምርቶች",
+        nav_vision: "ራእይ 2035",
+        nav_contact: "አግኙን",
+        hero_kicker: "ኢትዮጵያ • አ.አ • ወደ ፊት",
+        hero_title: "ከዕውቀት በላይ — ከወደፊትዎ ጋር",
+        hero_sub: "EthiMinD ከኢትዮጵያ የሚጀምር የፕላትፎርም እና ቴክኖሎጂ ኢኮሲስተም ነው — መሣሪያዎች፣ መሠረት፣ ትምህርት እና ምርምር.",
+        hero_cta_primary: "ኢኮሲስተሙን ይመልከቱ",
+        hero_cta_secondary: "ተመራማሪውን ያግኙ",
+        trust_title: "ሥነ‑ምግባር፣ ባህል እና ተፅዕኖ ጋር እየንደገፈ ነው.",
+        eco_title: "የEthiMinD ኢኮሲስተም",
+        eco_sub: "ሀሳብን ኢንዱስትሪ የሚያደርግ ተያያዥ ስታክ.",
+        prod_title: "መጀመሪያ ሙከራዎች",
+        vision_title: "ራእይ 2035",
+        cta_title: "የወደፊትን ከኢትዮጵያ ይገነቡ.",
+        cta_sub: "ተባባሪዎችን እና ሃብታሞችን እንጋብዝ.",
+        cta_primary: "እንተባበር",
+        cta_secondary: "ወረዳ ማጭድ",
+        foot_rights: "© "+new Date().getFullYear()+" EthiMinD.",
+        chat_title: "EthiMinD አጋር",
+        chat_placeholder: "ስለ ኢኮሲስተም ወይም ትብብር ጠይቅ…",
+        chat_disclaimer: "የአካባቢ ሙከራ ብቻ ነው.",
+        lang_label: "ቋንቋ",
+        lang_en: "EN",
+        lang_am: "AM",
+      },
+    }),
+    []
+  );
+
+  return dict[lang] || dict.en;
+}
+
+/****************
+ * Header & Nav
+ ****************/
+function Header({ t, lang, setLang }) {
+  return (
+    <header className="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-slate-950/65 bg-slate-950/85 border-b border-white/10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <Logo className="h-9 w-9" />
+          <span className="font-semibold tracking-wide">EthiMinD</span>
+        </div>
+        <nav className="hidden md:flex items-center gap-8 text-sm text-slate-300">
+          <a href="#home" className="hover:text-white">{t.nav_home}</a>
+          <a href="#ecosystem" className="hover:text-white">{t.nav_ecosystem}</a>
+          <a href="#products" className="hover:text-white">{t.nav_products}</a>
+          <a href="#vision" className="hover:text-white">{t.nav_vision}</a>
+          <a href="#contact" className="hover:text-white">{t.nav_contact}</a>
+        </nav>
+        <div className="flex items-center gap-2">
+          <LanguageSwitch lang={lang} setLang={setLang} t={t} />
+          <a href="#contact" className="ml-2 inline-flex items-center rounded-xl border border-cyan-300/30 bg-cyan-300/10 px-4 py-2 text-sm font-medium text-cyan-200 hover:bg-cyan-300/20 transition">{t.cta_primary}</a>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+function LanguageSwitch({ lang, setLang, t }) {
+  return (
+    <div className="flex items-center gap-2 text-xs text-slate-300">
+      <span className="hidden sm:inline">{t.lang_label}</span>
+      <button
+        onClick={() => setLang("en")}
+        className={`px-2.5 py-1 rounded-lg border ${lang === "en" ? "border-cyan-400 text-white" : "border-white/10 hover:border-white/20"}`}
+        aria-pressed={lang === "en"}
+      >{t.lang_en}</button>
+      <button
+        onClick={() => setLang("am")}
+        className={`px-2.5 py-1 rounded-lg border ${lang === "am" ? "border-cyan-400 text-white" : "border-white/10 hover:border-white/20"}`}
+        aria-pressed={lang === "am"}
+      >{t.lang_am}</button>
+    </div>
+  );
+}
+
+/********
+ * Hero
+ ********/
+function Hero({ t }) {
+  return (
+    <section id="home" className="relative overflow-hidden">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-24">
+        <p className="text-cyan-300/80 tracking-[0.3em] text-xs sm:text-sm uppercase">{t.hero_kicker}</p>
+        <h1 className="mt-5 text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
+          <span className="bg-gradient-to-r from-cyan-200 via-sky-300 to-emerald-300 bg-clip-text text-transparent drop-shadow">{t.hero_title}</span>
+        </h1>
+        <p className="mt-5 max-w-2xl text-slate-300">{t.hero_sub}</p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <a href="#ecosystem" className="rounded-2xl px-5 py-3 bg-cyan-400/20 border border-cyan-300/30 hover:bg-cyan-400/30 text-cyan-100 font-medium transition">{t.hero_cta_primary}</a>
+          <a href="#about" className="rounded-2xl px-5 py-3 bg-white/5 border border-white/10 hover:bg-white/10 text-slate-100 font-medium transition">{t.hero_cta_secondary}</a>
+        </div>
+        <HeroCards />
+      </div>
+    </section>
+  );
+}
+
+function HeroCards() {
+  const items = [
+    { title: "Privacy‑first AI", body: "On‑device assistants and secure model hosting.", icon: "🔒" },
+    { title: "Amharic‑first", body: "Local language training data and tools.", icon: "🗣️" },
+    { title: "Green compute", body: "Efficiency, renewables, and edge AI.", icon: "🌱" },
+  ];
+  return (
+    <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {items.map((i, idx) => (
+        <div key={idx} className="rounded-2xl border border-white/10 bg-white/5 p-5 hover:border-cyan-300/30 transition">
+          <div className="text-2xl" aria-hidden>{i.icon}</div>
+          <h3 className="mt-3 font-semibold text-lg">{i.title}</h3>
+          <p className="mt-1 text-slate-300 text-sm">{i.body}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/****************
+ * Trust bar
+ ****************/
+function Trustbar({ t }) {
+  return (
+    <div className="border-y border-white/10 bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+        <p className="text-center text-slate-300">{t.trust_title}</p>
+      </div>
+    </div>
+  );
+}
+
+/****************
+ * Ecosystem
+ ****************/
+function Ecosystem({ t }) {
+  return (
+    <section id="ecosystem" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+      <h2 className="text-2xl sm:text-4xl font-bold">{t.eco_title}</h2>
+      <p className="mt-2 text-slate-300">{t.eco_sub}</p>
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
+        {t.eco_items?.map((item, idx) => (
+          <div key={idx} className="rounded-2xl p-6 border border-white/10 bg-white/5 hover:border-cyan-300/30 transition">
+            <h3 className="font-semibold">{item.title}</h3>
+            <p className="mt-1 text-sm text-slate-300">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/****************
+ * Products / Pilots
+ ****************/
+function Products({ t }) {
+  const cards = t.prod_cards || [];
+  return (
+    <section id="products" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+      <h2 className="text-2xl sm:text-4xl font-bold">{t.prod_title}</h2>
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
+        {cards.map((c, idx) => (
+          <div key={idx} className="group rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-slate-900 p-6 hover:from-cyan-400/10 hover:border-cyan-300/30 transition">
+            <div className="text-sm tracking-widest text-cyan-300/80">{c.name}</div>
+            <h3 className="mt-2 font-semibold">{c.desc}</h3>
+            <div className="mt-6 flex items-center gap-2">
+              <span className="text-xs text-slate-400">Prototype</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-cyan-300/70 animate-pulse" />
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/****************
+ * Vision 2035
+ ****************/
+function Vision2035({ t }) {
+  const points = t.vision_points || [];
+  return (
+    <section id="vision" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+      <div className="rounded-3xl border border-cyan-300/30 bg-cyan-400/10 p-8">
+        <h2 className="text-2xl sm:text-4xl font-bold flex items-center gap-3">
+          <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-cyan-300/20 border border-cyan-300/40">🚀</span>
+          {t.vision_title}
+        </h2>
+        <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {points.map((p, idx) => (
+            <li key={idx} className="flex items-start gap-3 text-slate-100">
+              <span className="mt-1 h-2 w-2 rounded-full bg-cyan-300"></span>
+              <span>{p}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+/********
+ * CTA
+ ********/
+function CTA({ t }) {
+  return (
+    <section id="contact" className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-20">
+      <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+        <h3 className="text-2xl sm:text-3xl font-bold text-center">{t.cta_title}</h3>
+        <p className="mt-2 text-center text-slate-300">{t.cta_sub}</p>
+        <form onSubmit={(e) => e.preventDefault()} className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <input required placeholder="Name" className="col-span-1 sm:col-span-1 rounded-xl bg-slate-900/60 border border-white/10 px-4 py-3 outline-none focus:border-cyan-300/40" />
+          <input required type="email" placeholder="Email" className="col-span-1 sm:col-span-1 rounded-xl bg-slate-900/60 border border-white/10 px-4 py-3 outline-none focus:border-cyan-300/40" />
+          <button className="col-span-1 rounded-xl bg-cyan-400/20 border border-cyan-300/30 px-4 py-3 font-medium text-cyan-100 hover:bg-cyan-400/30 transition">{t.cta_primary}</button>
+        </form>
+        <div className="mt-3 text-center text-xs text-slate-400">{t.cta_secondary}</div>
+      </div>
+    </section>
+  );
+}
+
+/**********
+ * Footer
+ **********/
+function Footer({ t }) {
+  return (
+    <footer className="border-t border-white/10 py-10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="flex items-center gap-3 text-slate-300">
+          <Logo className="h-6 w-6" /> <span>EthiMinD</span>
+        </div>
+        <p className="text-xs text-slate-400">{t.foot_rights}</p>
+      </div>
+    </footer>
+  );
+}
+
+/***************
+ * Chat widget
+ ***************/
+function ChatWidget({ t }) {
+  const [open, setOpen] = useState(false);
+  const [msgs, setMsgs] = useState([
+    { role: "ai", text: "Selam! I’m the EthiMinD Assistant. How can I help?" },
+  ]);
+  const [input, setInput] = useState("");
+  const boxRef = useRef(null);
+
+  useEffect(() => {
+    boxRef.current?.scrollTo({ top: boxRef.current.scrollHeight, behavior: "smooth" });
+  }, [msgs, open]);
+
+  const send = () => {
+    if (!input.trim()) return;
+    const ask = input.trim();
+    setMsgs((m) => [...m, { role: "user", text: ask }]);
+    setInput("");
+    // Mock response — replace with real API later
+    setTimeout(() => {
+      setMsgs((m) => [
+        ...m,
+        { role: "ai", text: mockAnswer(ask) },
+      ]);
+    }, 400);
+  };
+
+  return (
+    <div className="fixed bottom-4 right-4 z-50">
+      {open && (
+        <div className="mb-3 w-[90vw] max-w-sm rounded-2xl border border-white/10 bg-slate-900 shadow-2xl">
+          <div className="flex items-center justify-between p-3 border-b border-white/10">
+            <div className="flex items-center gap-2"><Logo className="h-5 w-5" /><span className="text-sm font-semibold">{t.chat_title}</span></div>
+            <button onClick={() => setOpen(false)} className="text-slate-300 hover:text-white">✕</button>
+          </div>
+          <div ref={boxRef} className="h-64 overflow-y-auto p-3 space-y-2">
+            {msgs.map((m, i) => (
+              <div key={i} className={`max-w-[85%] rounded-2xl px-3 py-2 text-sm ${m.role === "ai" ? "bg-white/5" : "bg-cyan-400/20 ml-auto"}`}>
+                {m.text}
+              </div>
+            ))}
+          </div>
+          <div className="p-3 border-t border-white/10">
+            <div className="text-[10px] text-slate-400 mb-1">{t.chat_disclaimer}</div>
+            <div className="flex items-center gap-2">
+              <input value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e)=> e.key==='Enter' && send()} placeholder={t.chat_placeholder} className="flex-1 rounded-xl bg-slate-800 border border-white/10 px-3 py-2 outline-none focus:border-cyan-300/40" />
+              <button onClick={send} className="rounded-xl bg-cyan-400/20 border border-cyan-300/30 px-3 py-2 hover:bg-cyan-400/30 transition">Send</button>
+            </div>
+          </div>
+        </div>
+      )}
+      <button onClick={() => setOpen((v) => !v)} className="rounded-full h-14 w-14 flex items-center justify-center border border-cyan-300/40 bg-cyan-400/20 hover:bg-cyan-400/30 shadow-lg transition" aria-label="Open chat">
+        💬
+      </button>
+    </div>
+  );
+}
+
+function mockAnswer(q) {
+  const lower = q.toLowerCase();
+  if (lower.includes("ecosystem")) return "Our stack spans infrastructure, devices, sectors, and education — all Amharic‑first.";
+  if (lower.includes("partner")) return "Share your name and email — we’ll reach out with collaboration steps.";
+  if (lower.includes("invest")) return "We’re preparing pilots through 2026–2027; investor brief available on request.";
+  if (lower.includes("translation") || lower.includes("amharic")) return "Site supports EN/AM today; more Ethiopian languages coming.";
+  return "Thanks! I’ll share your note with the team.";
+}
+
+/*********************
+ * Decorative elements
+ *********************/
+function GradientBackdrop() {
+  return (
+    <div aria-hidden className="pointer-events-none fixed inset-0 -z-10">
+      <div className="absolute inset-x-0 top-[-10%] mx-auto h-[28rem] w-[36rem] blur-3xl opacity-30 bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-cyan-300 via-sky-400 to-emerald-300" />
+      <div className="absolute right-0 bottom-[-10%] h-[28rem] w-[28rem] blur-3xl opacity-20 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-sky-300 via-cyan-400 to-transparent" />
+    </div>
+  );
+}
+
+function Logo({ className = "h-8 w-8" }) {
+  return (
+    <svg className={className} viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="EthiMinD logo">
+      <defs>
+        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#67e8f9" />
+          <stop offset="100%" stopColor="#34d399" />
+        </linearGradient>
+      </defs>
+      <path fill="url(#g)" d="M28 8c12 0 22 8 22 18s-10 18-22 18c-2 0-4 0-6-1l-8 5 3-9c-3-3-5-8-5-13 0-10 10-18 22-18z"/>
+    </svg>
+  );
+}
