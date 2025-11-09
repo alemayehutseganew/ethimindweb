@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
+// Founder profile section
 export default function FounderSection() {
   const { t } = useTranslation();
 
