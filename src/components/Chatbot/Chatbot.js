@@ -11,6 +11,21 @@ const Chatbot = () => {
 
   // Enhanced EthiMinD knowledge base
   const ethiMindKnowledge = {
+    home: {
+      tagline: 'Project EthiMinD · Beyond Intelligence, With Your Future',
+      headline: "Building Ethiopia's Intelligent Future",
+      lead:
+        'Ethimind is Africa’s future hub for inclusive innovation, combining digital infrastructure, engineering excellence, and transformative services so individuals, governments, and businesses thrive across the continent.',
+      stats: [
+        { label: 'Technology Prototypes', value: '9+' },
+        { label: 'Jobs Catalyzed by 2030', value: '110,000+' },
+        { label: 'Pan-African Reach', value: '54 Countries' },
+      ],
+      actions: [
+        { label: 'Explore the Vision', link: '/vision' },
+        { label: 'Partner With Us', link: '/partners' },
+      ],
+    },
     company: {
       description: "EthiMinD is building Ethiopia's end-to-end AI ecosystem spanning devices, infrastructure, education, and research - rooted in culture, powered by innovation.",
       mission: "Beyond Intelligence, With Your Future - Making AI accessible and building an intelligent civilization from Ethiopia.",
@@ -76,10 +91,22 @@ const Chatbot = () => {
       },
     ],
     impact: [
-      'Technology & Innovation · Africa’s center for research, robotics, and sustainable engineering',
-      'People & Skills · Digital literacy for millions and talent development across 54 nations',
-      'Economic Impact · $500M+ economic value, 10,000 direct jobs, 100,000 indirect by 2030',
-      'Governance & Sustainability · Ethical AI frameworks, green compute, and continental partnerships',
+      {
+        title: 'Technology & Innovation',
+        detail: 'Africa’s center for research, robotics, and sustainable engineering',
+      },
+      {
+        title: 'People & Skills',
+        detail: 'Digital literacy for millions and talent development across 54 nations',
+      },
+      {
+        title: 'Economic Impact',
+        detail: '$500M+ economic value, 10,000 direct jobs, 100,000 indirect by 2030',
+      },
+      {
+        title: 'Governance & Sustainability',
+        detail: 'Ethical AI frameworks, green compute, and continental partnerships',
+      },
     ],
     join: {
       headline: "Join Ethiopia's AI Revolution",
@@ -183,6 +210,7 @@ const Chatbot = () => {
 
   const getEnhancedResponse = (message, context) => {
     const lowerMessage = message.toLowerCase();
+    const heroTriggers = ['project ethimind', 'beyond intelligence', 'intelligent future', 'home hero', 'inclusive innovation'];
     let response = null;
     let confidence = 0.9;
     let responseType = 'information';
@@ -224,6 +252,13 @@ const Chatbot = () => {
       responseType = 'prototypes';
     }
 
+    // Hero / home summary
+    else if (heroTriggers.some(trigger => lowerMessage.includes(trigger)) || (lowerMessage.includes('hero') && lowerMessage.includes('home'))) {
+      response = `**${ethiMindKnowledge.home.tagline}**\n\n${ethiMindKnowledge.home.lead}\n\nStats:\n${ethiMindKnowledge.home.stats.map(stat => `• ${stat.label}: ${stat.value}`).join('\n')}\n\nNeed more context? Explore the vision or partner links to keep the momentum.`;
+      nextContext.lastTopic = 'home';
+      responseType = 'vision';
+    }
+
     // Company and vision
     else if (lowerMessage.includes('company') || lowerMessage.includes('ethimind') || lowerMessage.includes('about')) {
       response = `**EthiMinD Vision**\n\n${ethiMindKnowledge.company.description}\n\n**Mission:** ${ethiMindKnowledge.company.mission}\n**Vision:** ${ethiMindKnowledge.company.vision}\n\nOur philosophy focuses on Innovation, Excellence, Integrity, Community, and Impact.`;
@@ -247,7 +282,7 @@ const Chatbot = () => {
 
     // Impact and metrics
     else if (lowerMessage.includes('impact') || lowerMessage.includes('metrics') || lowerMessage.includes('success')) {
-      response = `**Impact Assessment & Success Metrics**\n${ethiMindKnowledge.impact.map(item => `• ${item}`).join('\n')}`;
+      response = `**Impact Assessment & Success Metrics**\n${ethiMindKnowledge.impact.map(item => `• **${item.title}** — ${item.detail}`).join('\n')}`;
       nextContext.lastTopic = 'impact';
       responseType = 'impact';
     }
@@ -281,7 +316,8 @@ const Chatbot = () => {
   };
 
   const getFallbackResponse = (message) => {
-    return `Thank you for your interest in "${message}". I'm your EthiMinD assistant, specializing in our AI ecosystem:\n\n• **Products**: iMind, iGrow, HealthAI, LearnAI\n• **Pillars**: Innovation, Excellence, Integrity, Community, Impact\n• **Prototype Programs**: Software, ML/AI, Cloud, Education, Robotics\n• **Impact & Join**: Research centers, talent development, investment, policy partnerships\n\nWhat specific area would you like to explore?`;
+    const heroTagline = ethiMindKnowledge.home.tagline;
+    return `Thank you for your interest in "${message}". I'm your EthiMinD assistant, aligned with ${heroTagline}. Here's a quick guide:\n\n• **Home Hero**: Inclusive innovation, digital infrastructure, engineering excellence, and transformative services\n• **Products**: iMind, iGrow, HealthAI, LearnAI\n• **Pillars**: Innovation, Excellence, Integrity, Community, Impact\n• **Prototype Programs**: Software, ML/AI, Cloud, Education, Robotics\n• **Impact & Join**: Research centers, talent development, investment, policy partnerships\n\nWhere should we dive next?`;
   };
 
   const handleSendMessage = async (e) => {
@@ -320,14 +356,14 @@ const Chatbot = () => {
   };
 
   const quickQuestions = [
-    "Tell me about EthiMinD's vision",
+    "What is Project EthiMinD's hero message?",
     "What are the EthiMinD pillars?",
-    "What is the prototype pipeline?",
+    "How does the prototype pipeline work?",
     "How is EthiMinD measuring impact?",
-    "How can I join the EthiMinD revolution?",
-    "What is the iMind AI-first phone?",
+    "How can I join Ethiopia's AI revolution?",
+    "Tell me about the iMind AI-first phone",
     "How does iGrow help farmers?",
-    "Tell me about LearnAI"
+    "What does LearnAI teach students and teachers?"
   ];
 
   const getMessageClassName = (message) => {
