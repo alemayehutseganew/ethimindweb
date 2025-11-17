@@ -1,0 +1,209 @@
+.gaming-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.gaming-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 30% 50%, rgba(118, 185, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 70% 20%, rgba(118, 185, 0, 0.05) 0%, transparent 50%);
+}
+
+.gaming-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.gaming-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #76b900;
+  line-height: 1.2;
+}
+
+.gaming-description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  color: #ccc;
+  max-width: 500px;
+}
+
+.gaming-features {
+  display: grid;
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.feature-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(10px);
+}
+
+.feature-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.feature-content h4 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: white;
+}
+
+.feature-content p {
+  color: #ccc;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.gaming-actions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.gaming-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.visual-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.visual-placeholder {
+  height: 200px;
+  background: linear-gradient(45deg, #76b900, #669900);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 25px;
+  color: white;
+}
+
+.visual-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.stat {
+  text-align: center;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #76b900;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: #ccc;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .gaming-content {
+    gap: 40px;
+  }
+  
+  .gaming-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .gaming-section {
+    padding: 60px 0;
+  }
+  
+  .gaming-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  .gaming-title {
+    font-size: 2rem;
+  }
+  
+  .gaming-description {
+    font-size: 1.1rem;
+    margin: 0 auto 40px;
+  }
+  
+  .feature-card {
+    text-align: left;
+  }
+  
+  .gaming-actions {
+    justify-content: center;
+  }
+  
+  .visual-card {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .gaming-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .gaming-actions .btn {
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  .visual-stats {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}

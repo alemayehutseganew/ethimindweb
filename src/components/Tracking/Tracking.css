@@ -1,0 +1,52 @@
+.tracking-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.tracking-map {
+  background: #f3f4f6;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+}
+
+.tracking-controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.tracking-coords {
+  font-size: 0.95rem;
+  color: #334155;
+}
+
+.tracking-small {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.btn-track {
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg,#4299e1,#3182ce);
+  color: #fff;
+}
+
+.btn-stop {
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: #e53e3e;
+  color: #fff;
+}

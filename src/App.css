@@ -1,0 +1,256 @@
+:root {
+  --ethimind-purple: #8B5FBF;
+  --ethimind-indigo: #6A4C9C;
+  --ethimind-black: #000000;
+  --ethimind-dark-gray: #1a1a1a;
+  --ethimind-light-gray: #f6f6f6;
+  --ethimind-white: #ffffff;
+  --ethimind-accent: #9D7AD4;
+  --ethimind-header-height: 72px;
+  --heading-font: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  --body-font: 'Segoe UI', Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--body-font);
+  color: var(--ethimind-white);
+  background: var(--ethimind-black);
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #010101;
+}
+
+header {
+  height: var(--ethimind-header-height);
+  background: var(--ethimind-black);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  border-bottom: 1px solid #222;
+}
+
+header img {
+  height: 40px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  color: var(--ethimind-white);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+nav ul li:hover {
+  color: var(--ethimind-purple);
+}
+
+.hero-banner {
+  background: linear-gradient(to top right, var(--ethimind-dark-gray), var(--ethimind-black) 80%);
+  padding: 72px 0 56px 0;
+  text-align: center;
+}
+
+.hero-banner h1 {
+  font-family: var(--heading-font);
+  color: var(--ethimind-purple);
+  font-size: 2.5rem;
+  margin: 0 0 24px 0;
+}
+
+.hero-banner p {
+  font-size: 1.25rem;
+  color: var(--ethimind-white);
+  margin: 0 0 32px 0;
+}
+
+.hero-banner button {
+  background: var(--ethimind-purple);
+  color: var(--ethimind-white);
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 16px 48px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.hero-banner button:hover {
+  background: var(--ethimind-accent);
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+section {
+  padding: 56px 14vw;
+  background: var(--ethimind-black);
+}
+
+section h2 {
+  font-family: var(--heading-font);
+  color: var(--ethimind-purple);
+  margin-bottom: 36px;
+}
+
+.featured-announcements,
+.products-showcase,
+.news-panel,
+.events-section {
+  margin-bottom: 46px;
+}
+
+.featured-announcements ul,
+.products-showcase ul,
+.news-panel ul,
+.events-section ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.featured-announcements li,
+.products-showcase li,
+.news-panel li,
+.events-section li {
+  color: var(--ethimind-white);
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 1.12rem;
+}
+
+.featured-announcements li:last-child,
+.products-showcase li:last-child,
+.news-panel li:last-child,
+.events-section li:last-child {
+  border-bottom: none;
+}
+
+footer {
+  background: var(--ethimind-dark-gray);
+  color: var(--ethimind-white);
+  text-align: center;
+  padding: 28px 0;
+  font-size: 0.95rem;
+  border-top: 1px solid #222;
+}
+
+.ethimind-gradient {
+  background: linear-gradient(135deg, var(--ethimind-purple), var(--ethimind-indigo));
+}
+
+.tech-showcase {
+  background: var(--ethimind-dark-gray);
+  border-left: 4px solid var(--ethimind-purple);
+}
+
+.innovation-highlight {
+  background: rgba(139, 95, 191, 0.1);
+  border: 1px solid rgba(139, 95, 191, 0.3);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.contact-link {
+  color: var(--ethimind-purple);
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.contact-link:hover {
+  color: var(--ethimind-accent);
+}
+
+.nav-link.contact-link {
+  padding: 0.5rem 1rem;
+  display: inline-block;
+}
+
+.btn-ethimind {
+  background: var(--ethimind-purple);
+  color: var(--ethimind-white);
+  border: none;
+  border-radius: 4px;
+  padding: 12px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-ethimind:hover {
+  background: var(--ethimind-accent);
+  transform: translateY(-2px);
+}
+
+.btn-ethimind-outline {
+  background: transparent;
+  color: var(--ethimind-purple);
+  border: 2px solid var(--ethimind-purple);
+  border-radius: 4px;
+  padding: 12px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-ethimind-outline:hover {
+  background: var(--ethimind-purple);
+  color: var(--ethimind-white);
+}
+
+@media (max-width: 900px) {
+  section {
+    padding: 36px 4vw;
+  }
+
+  header {
+    padding: 0 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-banner h1 {
+    font-size: 1.5rem;
+  }
+
+  section h2 {
+    font-size: 1.15rem;
+  }
+
+  nav ul {
+    gap: 1rem;
+  }
+}

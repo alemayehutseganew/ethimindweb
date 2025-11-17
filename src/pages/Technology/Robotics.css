@@ -1,0 +1,272 @@
+.robotics-page {
+  padding: 4rem 2rem 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  background: radial-gradient(circle at 80% 0%, rgba(159, 212, 255, 0.2), transparent 45%),
+    radial-gradient(circle at 15% 15%, rgba(255, 189, 165, 0.15), transparent 40%);
+}
+
+.robotics-hero {
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 2.6rem;
+  border-radius: 30px;
+  background: rgba(10, 12, 22, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 35px 65px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.robotics-hero::after {
+  content: '';
+  position: absolute;
+  inset: -30% -20%;
+  background: radial-gradient(circle, rgba(8, 191, 255, 0.4), transparent 70%);
+  animation: drift 12s ease infinite;
+}
+
+@keyframes drift {
+  0% {
+    transform: translate(0%, 0%) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate(12%, -5%) scale(1.2);
+    opacity: 0.25;
+  }
+  100% {
+    transform: translate(0%, 0%) scale(1);
+    opacity: 0.4;
+  }
+}
+
+.robotics-hero h1 {
+  font-size: clamp(2.5rem, 4vw, 3.6rem);
+  margin: 1rem 0;
+  line-height: 1.2;
+}
+
+.robotics-hero p {
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+}
+
+.eyebrow {
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: #9ce5ff;
+}
+
+.hero-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.8rem 1.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #7b61ff, #24c6dc);
+  color: #fff;
+  box-shadow: 0 12px 35px rgba(124, 97, 255, 0.35);
+}
+
+.btn.primary:hover {
+  transform: translateY(-2px);
+}
+
+.btn.ghost {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.hero-stats {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.hero-stats div {
+  padding: 1rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.stat-value {
+  font-size: 2rem;
+  margin: 0;
+  color: #fff;
+}
+
+.stat-label {
+  margin: 0.3rem 0 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+}
+
+.robotics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.2rem;
+}
+
+.robotics-grid article {
+  padding: 1.6rem;
+  border-radius: 22px;
+  background: rgba(18, 23, 42, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4);
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.robotics-grid h3 {
+  margin-top: 0;
+  color: #fff;
+}
+
+.robotics-grid p {
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.5;
+}
+
+.robotics-grid article:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+}
+
+.robotics-streams {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  border-radius: 26px;
+  background: linear-gradient(150deg, rgba(8, 10, 24, 0.95), rgba(16, 30, 60, 0.95));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 30px 55px rgba(0, 0, 0, 0.35);
+}
+
+.streams-intro {
+  max-width: 540px;
+}
+
+.streams-intro h2 {
+  margin: 0.4rem 0 0.8rem;
+  color: #fff;
+}
+
+.streams-intro p {
+  margin: 0;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.streams-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.streams-grid article {
+  padding: 1.4rem;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+  transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.streams-grid h4 {
+  margin: 0;
+  color: #fff;
+}
+
+.streams-grid p {
+  margin: 0.5rem 0 0;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.btn-link {
+  margin-top: 1rem;
+  background: none;
+  border: none;
+  color: #7b61ff;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.streams-grid article:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+}
+
+.robotics-cta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1.8rem 2.2rem;
+  border-radius: 26px;
+  background: rgba(20, 20, 30, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+}
+
+.robotics-cta h3 {
+  margin: 0 0 0.3rem;
+}
+
+.robotics-cta p {
+  margin: 0;
+  max-width: 520px;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .robotics-hero,
+  .robotics-streams,
+  .robotics-cta {
+    padding: 1.6rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .robotics-page {
+    padding: 3rem 1.4rem 4rem;
+  }
+
+  .robotics-grid,
+  .robotics-streams {
+    grid-template-columns: 1fr;
+  }
+
+  .robotics-cta {
+    flex-direction: column;
+    text-align: left;
+  }
+}

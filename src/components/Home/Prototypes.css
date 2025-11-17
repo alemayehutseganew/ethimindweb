@@ -1,0 +1,44 @@
+.prototypes {
+  padding: 80px 20px;
+  background: #f9fafb;
+}
+
+.prototypes-heading {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.prototypes-heading h2 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.prototype-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.prototype-card {
+  background: white;
+  padding: 22px;
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.1);
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.prototype-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #0f172a;
+}
+
+.prototype-card ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #475569;
+  line-height: 1.6;
+}

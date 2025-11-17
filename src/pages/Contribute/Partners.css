@@ -1,0 +1,187 @@
+.partners-page {
+  padding: 4rem 2rem 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  background: radial-gradient(circle at top right, rgba(196, 254, 248, 0.2), transparent 45%),
+    radial-gradient(circle at 20% 20%, rgba(255, 209, 220, 0.15), transparent 45%);
+}
+
+.partners-hero {
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: left;
+  padding: 2rem;
+  border-radius: 28px;
+  background: rgba(18, 18, 20, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 25px 40px rgba(0, 0, 0, 0.25);
+}
+
+.partners-hero h1 {
+  font-size: clamp(2.35rem, 4vw, 3.25rem);
+  line-height: 1.2;
+  margin: 1rem 0;
+}
+
+.partners-hero p {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1.5rem;
+}
+
+.eyebrow {
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: #9ce5ff;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.75rem 1.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #7b61ff, #24c6dc);
+  color: #fff;
+  box-shadow: 0 12px 30px rgba(124, 97, 255, 0.4);
+}
+
+.btn.primary:hover {
+  transform: translateY(-2px);
+}
+
+.btn.ghost {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.btn-link {
+  padding: 0;
+  background: none;
+  color: #7b61ff;
+  font-weight: 600;
+}
+
+.strategy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.4rem;
+}
+
+.strategy-card,
+.carrier-card {
+  padding: 1.6rem;
+  border-radius: 20px;
+  background: rgba(16, 20, 32, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  min-height: 200px;
+}
+
+.strategy-card h3,
+.carrier-card h4 {
+  margin-bottom: 0.8rem;
+  color: #fff;
+}
+
+.strategy-card p,
+.carrier-card p {
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.5;
+}
+
+.carrier-section {
+  padding: 2.5rem;
+  border-radius: 28px;
+  background: linear-gradient(160deg, rgba(9, 12, 25, 0.9), rgba(12, 31, 65, 0.9));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: grid;
+  gap: 2rem;
+}
+
+.carrier-intro h2 {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  margin: 0.35rem 0 0.6rem;
+}
+
+.carrier-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+}
+
+.carrier-card {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.carrier-card:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.08), transparent);
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+
+.carrier-card:hover:before {
+  opacity: 1;
+}
+
+.carrier-card button {
+  margin-top: 1.2rem;
+}
+
+.cta-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.8rem 2.2rem;
+  border-radius: 22px;
+  background: rgba(23, 23, 23, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.cta-panel h3 {
+  margin: 0 0 0.4rem;
+}
+
+.cta-panel p {
+  margin: 0;
+  max-width: 600px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+@media (max-width: 640px) {
+  .partners-hero,
+  .carrier-section,
+  .cta-panel {
+    padding: 1.4rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .cta-panel {
+    flex-direction: column;
+    text-align: left;
+  }
+}

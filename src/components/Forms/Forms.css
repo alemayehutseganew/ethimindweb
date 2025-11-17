@@ -1,0 +1,594 @@
+/* Forms Styling */
+.form-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e1e5e9;
+  max-width: 500px;
+  margin: 0 auto;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.form-card h3 {
+  color: #2d3748;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  border-bottom: 2px solid #f7fafc;
+  padding-bottom: 0.75rem;
+}
+
+.form-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-card input,
+.form-card textarea,
+.form-card select {
+  padding: 0.75rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  background: #fff;
+  font-family: inherit;
+}
+
+.form-card input:focus,
+.form-card textarea:focus,
+.form-card select:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+  background: #fafcff;
+}
+
+.form-card textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-card button {
+  background: linear-gradient(135deg, #4299e1, #3182ce);
+  color: white;
+  border: none;
+  padding: 0.875rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.form-card button:hover {
+  background: linear-gradient(135deg, #3182ce, #2c5aa0);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(49, 130, 206, 0.3);
+}
+
+.form-card button:active {
+  transform: translateY(0);
+}
+
+.form-card button:disabled {
+  background: #a0aec0;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Status Messages */
+.form-card p {
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.form-card p:empty {
+  display: none;
+}
+
+/* Loading state */
+.form-card p:contains("Sending..."),
+.form-card p:contains("Submitting...") {
+  background: #bee3f8;
+  color: #2c5282;
+  border: 1px solid #90cdf4;
+}
+
+/* Success state */
+.form-card p:contains("Message sent"),
+.form-card p:contains("Thank you"),
+.form-card p:contains("Request received") {
+  background: #c6f6d5;
+  color: #276749;
+  border: 1px solid #9ae6b4;
+}
+
+/* Error state */
+.form-card p:contains("Submission failed") {
+  background: #fed7d7;
+  color: #c53030;
+  border: 1px solid #fc8181;
+}
+
+/* Forms Display Component */
+.forms-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.forms-display section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e1e5e9;
+}
+
+.forms-display h4 {
+  color: #2d3748;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #f7fafc;
+}
+
+.forms-display ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.forms-display li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f1f5f9;
+  color: #4a5568;
+  font-size: 0.9rem;
+}
+
+.forms-display li:last-child {
+  border-bottom: none;
+}
+
+.forms-display li:hover {
+  background: #f8fafc;
+  margin: 0 -0.5rem;
+  padding: 0.75rem 0.5rem;
+  border-radius: 6px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .form-card {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .forms-display {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .forms-display section {
+    padding: 1.25rem;
+  }
+}
+
+/* Animation for form elements */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-card {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.form-card input,
+.form-card textarea,
+.form-card button {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Focus states for accessibility */
+.form-card input:focus-visible,
+.form-card textarea:focus-visible {
+  outline: 2px solid #4299e1;
+  outline-offset: 2px;
+}
+
+/* Custom placeholder styling */
+.form-card input::placeholder,
+.form-card textarea::placeholder {
+  color: #a0aec0;
+  opacity: 1;
+}
+
+/* Number input specific styling */
+.form-card input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.form-card input[type="number"]::-webkit-outer-spin-button,
+.form-card input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Button Styles */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #4299e1, #3182ce);
+  color: white;
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #48bb78, #38a169);
+  color: white;
+}
+
+.btn-accent {
+  background: linear-gradient(135deg, #ed8936, #dd6b20);
+  color: white;
+}
+
+.btn-info {
+  background: linear-gradient(135deg, #38b2ac, #319795);
+  color: white;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Form Overlay */
+.form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.form-container {
+  display: inline-block;
+}
+
+/* Make modal popups smaller by default and provide minimized state */
+.form-overlay .form-card {
+  max-width: 460px;
+  width: 100%;
+  padding: 1rem 1rem;
+  /* allow smooth height/padding transitions on minimize/restore */
+  transition: max-height 260ms ease, padding 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+  max-height: 1200px;
+  overflow: hidden;
+}
+
+.form-card.minimized {
+  width: 320px;
+  max-width: 90%;
+  max-height: 56px;
+  padding: 6px 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  transform: translateY(-2px);
+}
+
+.form-card.minimized .form-header {
+  margin: 0;
+  padding: 0;
+  border-bottom: none;
+  width: 100%;
+}
+
+.form-card.minimized .form-header h3 {
+  font-size: 0.95rem;
+  margin: 0 0.5rem 0 0;
+}
+
+.form-card.minimized form,
+.form-card.minimized .status-success,
+.form-card.minimized .status-error,
+.form-card.minimized .status-loading {
+  display: none !important;
+}
+
+/* Form Header with Close Button */
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f7fafc;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #a0aec0;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+  color: #718096;
+  background: #f7fafc;
+}
+
+.minimize-btn {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: #94a3b8;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  margin-right: 0.25rem;
+}
+
+.minimize-btn:hover {
+  color: #718096;
+  background: #f7fafc;
+}
+
+/* SVG icon sizing inside minimize/close buttons */
+.minimize-btn svg,
+.close-btn svg {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  display: block;
+}
+
+/* smooth expand/restore animation helper */
+.form-card.animate-restore {
+  transition: max-height 260ms ease, padding 220ms ease;
+}
+
+/* Animated arrow icon for minimize/restore */
+.minimize-btn .arrow-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  transition: transform 240ms cubic-bezier(.2,.9,.2,1);
+  transform-origin: 50% 50%;
+}
+
+.form-card.minimized .minimize-btn .arrow-icon,
+.forms-display-card.minimized .minimize-btn .arrow-icon {
+  transform: rotate(180deg);
+}
+
+/* Forms Display Card */
+.forms-display-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  border: 1px solid #e1e5e9;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.form-card, .forms-display-card {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-overlay {
+    padding: 0.5rem;
+  }
+  
+  .forms-display-card {
+    padding: 1.5rem;
+  }
+  
+  .forms-display {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* User Activities Specific Styles */
+.user-email-section {
+  background: #f8fafc;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #4299e1;
+}
+
+.user-email-section label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.email-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.email-input:focus {
+  outline: none;
+  border-color: #4299e1;
+}
+
+.btn-small {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+.loading-section {
+  text-align: center;
+  padding: 2rem;
+  color: #4a5568;
+}
+
+.no-activities {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: #718096;
+}
+
+.no-activities-sub {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #a0aec0;
+}
+
+.email-required {
+  text-align: center;
+  padding: 2rem;
+  color: #718096;
+  background: #f7fafc;
+  border-radius: 8px;
+}
+
+/* Activity Items */
+.activity-meta {
+  font-size: 0.8rem;
+  color: #718096;
+  margin-top: 0.25rem;
+}
+
+.activity-message {
+  font-size: 0.9rem;
+  color: #4a5568;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.forms-display section h4 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #2d3748;
+}
+
+.forms-display li {
+  padding: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  transition: all 0.2s ease;
+}
+
+.forms-display li:hover {
+  background: #f8fafc;
+  transform: translateX(4px);
+}
+
+.forms-display li:last-child {
+  border-bottom: none;
+}
+
+/* Empty State Icons */
+.no-activities::before {
+  content: "📊";
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .user-email-section {
+    padding: 0.75rem;
+  }
+  
+  .forms-display {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .forms-display section {
+    margin-bottom: 1rem;
+  }
+}
