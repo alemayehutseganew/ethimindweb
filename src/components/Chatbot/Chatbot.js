@@ -16,6 +16,82 @@ const Chatbot = () => {
       mission: "Beyond Intelligence, With Your Future - Making AI accessible and building an intelligent civilization from Ethiopia.",
       vision: "To establish Ethiopia as Africa's pioneering AI-native civilization through sovereign innovation and human-centric technology."
     },
+    pillars: {
+      title: 'The EthiMinD Vision: More Than Technology',
+      philosophy: [
+        'Innovation · Rethinking and redesigning possibilities across Africa',
+        'Excellence · Engineering world-class solutions with global rigor',
+        'Integrity · Transparent, accountable, respectful collaboration',
+        'Community · Lifting African talent, businesses, and institutions',
+        'Impact · Building technology that changes lives, not just systems',
+      ],
+      layers: [
+        'Digital Infrastructure · Building Africa’s center of technological excellence',
+        'Automation & AI · Empowering businesses through modern tools',
+        'Education & Training · Digital literacy for youth and professionals',
+        'Research & Innovation · Robotics, electronics & sustainable engineering',
+        'Partner Ecosystem · Government, academia, and enterprise alliances',
+      ]
+    },
+    prototypes: [
+      {
+        title: 'Software Development & Engineering',
+        highlights: [
+          'Web, mobile, SaaS, and enterprise systems tailored for Africa',
+          'API architecture, integrations, and secure platforms',
+          'E-government, automation, and modernization programs',
+        ],
+      },
+      {
+        title: 'Machine Learning, Big Data & AI',
+        highlights: [
+          'Predictive analytics, NLP, computer vision, and recommender systems',
+          'AI-powered automation and business intelligence across sectors',
+          'Large-scale data platforms that unlock actionable insight',
+        ],
+      },
+      {
+        title: 'Cloud Computing & DevOps',
+        highlights: [
+          'Cloud infrastructure, IaC, containerization, and microservices',
+          'CI/CD pipelines, cloud security, and scalable platforms',
+          'Global-grade reliability with AWS, Azure, GCP expertise',
+        ],
+      },
+      {
+        title: 'Education, Training & Talent',
+        highlights: [
+          'Coding bootcamps, AI & data science academies, and cloud programs',
+          'Robotics/STEM initiatives, UI/UX labs, and digital learning platforms',
+          'Talent outsourcing, professional hiring, and capacity building',
+        ],
+      },
+      {
+        title: 'Robotics, Engineering & Media',
+        highlights: [
+          'Robotics, embedded systems, IoT, and drone innovation',
+          'Graphic design, branding, marketing, and creative media production',
+          'Photography, documentary, 3D animation, and motion design',
+        ],
+      },
+    ],
+    impact: [
+      'Technology & Innovation · Africa’s center for research, robotics, and sustainable engineering',
+      'People & Skills · Digital literacy for millions and talent development across 54 nations',
+      'Economic Impact · $500M+ economic value, 10,000 direct jobs, 100,000 indirect by 2030',
+      'Governance & Sustainability · Ethical AI frameworks, green compute, and continental partnerships',
+    ],
+    join: {
+      headline: "Join Ethiopia's AI Revolution",
+      pitches: [
+        'Invest in software, AI, cloud, and robotics innovation that scales across Africa',
+        'Partner on research, manufacturing, and creative media to shape the continent’s narrative',
+        'Access elite talent through hiring, training, and outsourcing programs',
+        'Collaborate on policy, governance, and ethical frameworks for digital transformation',
+      ],
+      contact: 'partners@ethimind.et',
+      careers: '/careers',
+    },
     products: {
       imind: {
         name: "iMind AI-First Phone",
@@ -134,9 +210,23 @@ const Chatbot = () => {
       responseType = 'product';
     }
 
+    // Pillars & philosophy
+    else if (lowerMessage.includes('pillars') || lowerMessage.includes('vision section') || lowerMessage.includes('philosophy')) {
+      response = `**${ethiMindKnowledge.pillars.title}**\n\nPhilosophy:\n${ethiMindKnowledge.pillars.philosophy.map(p => `• ${p}`).join('\n')}\n\nLayers:\n${ethiMindKnowledge.pillars.layers.map(l => `• ${l}`).join('\n')}`;
+      nextContext.lastTopic = 'pillars';
+      responseType = 'pillars';
+    }
+
+    // Prototype programs
+    else if (lowerMessage.includes('prototype') || lowerMessage.includes('pipeline') || lowerMessage.includes('portfolio')) {
+      response = `**Prototype Portfolio**\n\nFlagship initiatives (iMind, iGrow, HealthAI, LearnAI) rely on these technical programs:\n${ethiMindKnowledge.prototypes.map(p => `• ${p.title}: ${p.highlights.join('; ')}`).join('\n')}`;
+      nextContext.lastTopic = 'prototypes';
+      responseType = 'prototypes';
+    }
+
     // Company and vision
     else if (lowerMessage.includes('company') || lowerMessage.includes('ethimind') || lowerMessage.includes('about')) {
-      response = `**EthiMinD Vision**\n\n${ethiMindKnowledge.company.description}\n\n**Mission:** ${ethiMindKnowledge.company.mission}\n**Vision:** ${ethiMindKnowledge.company.vision}\n\nWe're building four key pillars:\n• AI Infrastructure & Sovereignty\n• Robotics & Automation\n• National Sector Transformation\n• Privacy-First AI & Local Language Focus`;
+      response = `**EthiMinD Vision**\n\n${ethiMindKnowledge.company.description}\n\n**Mission:** ${ethiMindKnowledge.company.mission}\n**Vision:** ${ethiMindKnowledge.company.vision}\n\nOur philosophy focuses on Innovation, Excellence, Integrity, Community, and Impact.`;
       nextContext.lastTopic = 'company';
       responseType = 'vision';
     }
@@ -155,9 +245,16 @@ const Chatbot = () => {
       responseType = 'language';
     }
 
+    // Impact and metrics
+    else if (lowerMessage.includes('impact') || lowerMessage.includes('metrics') || lowerMessage.includes('success')) {
+      response = `**Impact Assessment & Success Metrics**\n${ethiMindKnowledge.impact.map(item => `• ${item}`).join('\n')}`;
+      nextContext.lastTopic = 'impact';
+      responseType = 'impact';
+    }
+
     // Contact and next steps
-    else if (lowerMessage.includes('contact') || lowerMessage.includes('email') || lowerMessage.includes('join')) {
-      response = `**Get Involved with EthiMinD**\n\nWe're always looking for partners, investors, and talented individuals to join our mission.\n\n**Contact:** leadership@ethimind.et\n**Website:** ethimind.et\n**Careers:** careers@ethimind.et\n\nAre you interested in partnership opportunities, investment, or career positions?`;
+    else if (lowerMessage.includes('contact') || lowerMessage.includes('email') || lowerMessage.includes('join') || lowerMessage.includes('partners')) {
+      response = `**${ethiMindKnowledge.join.headline}**\n${ethiMindKnowledge.join.pitches.map(p => `• ${p}`).join('\n')}\n\nContact: ${ethiMindKnowledge.join.contact}\nCareers: ${ethiMindKnowledge.join.careers}`;
       nextContext.lastTopic = 'contact';
       responseType = 'contact';
     }
@@ -184,7 +281,7 @@ const Chatbot = () => {
   };
 
   const getFallbackResponse = (message) => {
-    return `Thank you for your interest in "${message}". I'm your EthiMinD assistant, specializing in our AI ecosystem:\n\n• **Products**: iMind, iGrow, HealthAI, LearnAI\n• **Sectors**: Agriculture, Healthcare, Education, Security\n• **Infrastructure**: AI compute, Local language tools, Green technology\n• **Company Vision**: Building Ethiopia's intelligent future\n\nWhat specific area would you like to explore?`;
+    return `Thank you for your interest in "${message}". I'm your EthiMinD assistant, specializing in our AI ecosystem:\n\n• **Products**: iMind, iGrow, HealthAI, LearnAI\n• **Pillars**: Innovation, Excellence, Integrity, Community, Impact\n• **Prototype Programs**: Software, ML/AI, Cloud, Education, Robotics\n• **Impact & Join**: Research centers, talent development, investment, policy partnerships\n\nWhat specific area would you like to explore?`;
   };
 
   const handleSendMessage = async (e) => {
@@ -224,13 +321,13 @@ const Chatbot = () => {
 
   const quickQuestions = [
     "Tell me about EthiMinD's vision",
-    "What is the iMind phone?",
+    "What are the EthiMinD pillars?",
+    "What is the prototype pipeline?",
+    "How is EthiMinD measuring impact?",
+    "How can I join the EthiMinD revolution?",
+    "What is the iMind AI-first phone?",
     "How does iGrow help farmers?",
-    "Tell me about HealthAI",
-    "LearnAI education platform",
-    "Local language AI support",
-    "Investment opportunities",
-    "Career positions available"
+    "Tell me about LearnAI"
   ];
 
   const getMessageClassName = (message) => {
